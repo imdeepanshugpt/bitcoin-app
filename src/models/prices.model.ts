@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Entity, model, property} from '@loopback/repository';
 
 @model()
@@ -23,14 +24,14 @@ export class Prices extends Entity {
 
   @property({
     type: 'date',
+    default: () => Date.now(),
   })
-  created_at?: string;
+  created_at?: Date;
 
   @property({
     type: 'date',
   })
-  updated_at?: string;
-
+  updated_at?: Date;
 
   constructor(data?: Partial<Prices>) {
     super(data);
