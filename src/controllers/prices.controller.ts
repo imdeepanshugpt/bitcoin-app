@@ -7,23 +7,24 @@ import {
   Where,
 } from '@loopback/repository';
 import {
-  post,
-  param,
+  del,
   get,
   getModelSchemaRef,
+  param,
   patch,
+  post,
   put,
-  del,
   requestBody,
   response,
 } from '@loopback/rest';
+import {getBitcoinPrices} from '../helper/bitcoin-api';
 import {Prices} from '../models';
 import {PricesRepository} from '../repositories';
 
 export class PricesController {
   constructor(
     @repository(PricesRepository)
-    public pricesRepository : PricesRepository,
+    public pricesRepository: PricesRepository,
   ) {}
 
   @post('/prices')
@@ -52,10 +53,27 @@ export class PricesController {
     description: 'Prices model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Prices) where?: Where<Prices>,
-  ): Promise<Count> {
+  async count(@param.where(Prices) where?: Where<Prices>): Promise<Count> {
     return this.pricesRepository.count(where);
+  }
+
+  @get('/bitcoin/prices')
+  @response(200, {
+    description: 'Array of bitcoin prices',
+    content: {
+      'application/json': {
+        type: 'any',
+      },
+    },
+  })
+  async getBTPrices(): Promise<any> {
+    return getBitcoinPrices();
+    // try {
+    //   const data = getBitcoinPrices();
+    //   return await Promise.resolve(data);
+    // } catch (error) {
+    //   return Promise.reject(error);
+    // }
   }
 
   @get('/prices')
@@ -70,9 +88,7 @@ export class PricesController {
       },
     },
   })
-  async find(
-    @param.filter(Prices) filter?: Filter<Prices>,
-  ): Promise<Prices[]> {
+  async find(@param.filter(Prices) filter?: Filter<Prices>): Promise<Prices[]> {
     return this.pricesRepository.find(filter);
   }
 
@@ -106,7 +122,8 @@ export class PricesController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Prices, {exclude: 'where'}) filter?: FilterExcludingWhere<Prices>
+    @param.filter(Prices, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Prices>,
   ): Promise<Prices> {
     return this.pricesRepository.findById(id, filter);
   }
