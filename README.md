@@ -2,20 +2,22 @@
 
 ## use env variable like this.
 
+```sh
 host = smtp.mailtrap.io
 port = 25 or 465 or 587 or 2525
 username = xxxx
 password = xxxx
 minPrice = 20000
 maxPrice = 29736
+```
 
-# use http://localhost:3000/explore to see swagger for API documentation
+use http://localhost:3000/explore to see swagger for API documentation
 
-# use localhost postgres database to connect with DB
+use localhost postgres database to connect with DB
 
-# use /bitcoin/prices get call to fetch bitcoin data and it will update in postgres database.
+use /bitcoin/prices get call to fetch bitcoin data and it will update in postgres database.
 
-# use /api/prices/btc get call to see saved data of postgres DB.
+use /api/prices/btc get call to see saved data of postgres DB.
 
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
