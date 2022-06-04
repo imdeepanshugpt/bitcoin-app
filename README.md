@@ -1,5 +1,22 @@
 # bitcoin-app
 
+## use env variable like this.
+
+host = smtp.mailtrap.io
+port = 25 or 465 or 587 or 2525
+username = xxxx
+password = xxxx
+minPrice = 20000
+maxPrice = 29736
+
+# use http://localhost:3000/explore to see swagger for API documentation
+
+# use localhost postgres database to connect with DB
+
+# use /bitcoin/prices get call to fetch bitcoin data and it will update in postgres database.
+
+# use /api/prices/btc get call to see saved data of postgres DB.
+
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
 
@@ -66,4 +83,4 @@ yarn test
 Please check out [LoopBack 4 documentation](https://loopback.io/doc/en/lb4/) to
 understand how you can continue to add features to this application.
 
-[![LoopBack](https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
+[![LoopBack](<https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png>)](http://loopback.io/)
